@@ -1,0 +1,26 @@
+# Logs
+logs
+*.log
+*.log*
+
+# Production
+dist
+dist-ssr
+build
+
+# Development
+node_modules
+*.local
+package-lock.json
+
+# Editor & OS
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
