@@ -1,7 +1,8 @@
 // webpack.config.js
 const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin
+const { ModuleFederationPlugin } = require('webpack').container
+const ExternalTemplateRemotesPlugin = require('external-remotes-plugin')
 const path = require('path')
 const deps = require('./package.json').dependencies
 const webpack = require('webpack')
@@ -15,7 +16,6 @@ module.exports = {
     static: path.join(__dirname, 'dist'),
     watchFiles: [path.resolve(__dirname, '..')],
     port: 4000,
-    liveReload: true,
     hot: true,
   },
   output: {
@@ -60,7 +60,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'app',
       remotes: {
-        auth: 'auth@[authUrl]/remoteEntry.js',
+        // auth: 'auth@[authUrl]/remoteEntry.js',
         lib: 'lib@[libUrl]/remoteEntry.js',
       },
       shared: {
@@ -77,6 +77,7 @@ module.exports = {
         },
       },
     }),
+    new ExternalTemplateRemotesPlugin(),
     new ReactRefreshPlugin({
       exclude: [/node_modules/],
     }),
