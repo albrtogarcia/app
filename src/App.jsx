@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react'
 const Login = React.lazy(() => import('auth/App'))
-const Card = React.lazy(() => import('lib/App'))
+const Button = React.lazy(() => import('lib/Button'))
 
 const App = () => {
   return (
@@ -23,7 +23,7 @@ const App = () => {
       </div>
       <Suspense fallback={'loading...'}>
         <Login />
-        <Card />
+        <Button />
       </Suspense>
     </div>
   )
